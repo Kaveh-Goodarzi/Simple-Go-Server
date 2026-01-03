@@ -20,6 +20,7 @@ func main() {
 			http.Error(w, "missing msg parameter", http.StatusBadRequest)
 			return
 		}
+		w.Write([]byte(msg))
 	})
 }
 
