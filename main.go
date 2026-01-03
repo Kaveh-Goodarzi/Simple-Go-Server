@@ -12,5 +12,14 @@ func main() {
 		}
 		w.Write([]byte("OK"))
 	})
+
+	http.HandleFunc("/echo", func(w http.ResponseWriter, r *http.Request) {
+		msg := r.URL.Query().Get("msg")
+
+		if msg == "" {
+			http.Error(w, "missing msg parameter", http.StatusBadRequest)
+			return
+		}
+	})
 }
 
